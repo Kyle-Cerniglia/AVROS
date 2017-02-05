@@ -1,5 +1,5 @@
 2328 Core
-	P1
+	P0
 		Terminal
 		Peripheral I/O
 		File Manager
@@ -7,7 +7,8 @@
 			Calculator
 			uBASIC IDE
 			Notepad
-	P2
+	P1
+		Booter
 		GPU
 		Interpreter
 		uBASIC Compiler
@@ -131,6 +132,22 @@ Memory distribution
 			0x0075 = Device 13 I2C addr
 			0x0076 = Device 14 I2C addr
 			0x0077 = Device 15 I2C addr
+			0x0078 = Processor 0 flag byte
+			0x0079 = Processor 1 flag byte
+			0x007A = Processor 2 flag byte
+			0x007B = Processor 3 flag byte
+			0x007C = Processor 4 flag byte
+			0x007D = Processor 5 flag byte
+			0x007E = Processor 6 flag byte
+			0x007F = Processor 7 flag byte
+			0x0080 = Processor 8 flag byte
+			0x0081 = Processor 9 flag byte
+			0x0082 = Processor 10 flag byte
+			0x0083 = Processor 11 flag byte
+			0x0084 = Processor 12 flag byte
+			0x0085 = Processor 13 flag byte
+			0x0086 = Processor 14 flag byte
+			0x0087 = Processor 15 flag byte
 		0x0800 Page 1 begin program space
 		0x1000 2
 		0x1800 3
@@ -177,8 +194,13 @@ Files
 		0xFF
 
 Boot procedure
-	Cascaded power delay
+	Processor 1 (GPU) controls boot procedure to display info
+	Cascaded power on delay of 0.1s
 	Load I2C address based on processor ID
-	Processor 0 pings known I2C devices for connection check
-	
-	
+	Processor 1 pings known I2C devices for connection check
+	Processor 1 clears processor flag bytes
+	Processors set flag bytes
+	Processor 1 clears EERAM devices
+	Processor 1 transfers control to processor 0
+	Processor 0 starts terminal
+	Completed system boot
