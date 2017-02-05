@@ -1,3 +1,12 @@
+Format
+	64 byte buffer
+	typing adds to the buffer
+	backspace removes from the buffer
+	enter adds in termination byte and parses and runs the command
+	56 bytes = 7 words of max 8 chars long
+	7 bytes = max of 7 spaces between 8 words
+	1 byte = 0xFF termination byte
+
 General commands
 	sys
 	(General system commands)
@@ -17,6 +26,9 @@ General commands
 			spi
 				<mem addr>
 				4 byte hex addr
+			local
+				<mem addr>
+				4 byte hex addr
 		write
 			<type>
 			i2c
@@ -27,6 +39,16 @@ General commands
 			spi
 				<mem addr>
 				4 byte hex addr
+			local
+				<mem addr>
+				4 byte hex addr
+		format
+			<type>
+			i2c
+				<i2c addr>
+				2 byte hex addr
+			spi
+			local
 	load
 	(load file into EERAM)
 		<source type>
