@@ -1,0 +1,51 @@
+General commands
+	sys
+		info
+			print system info
+		rst
+			reset system
+	mem
+		read
+			<type>
+			i2c
+				<i2c addr>
+				2 byte hex addr
+					<mem addr>
+					4 byte hex addr
+			spi
+				<mem addr>
+				4 byte hex addr
+		write
+			<type>
+			i2c
+				<i2c addr>
+				2 byte hex addr
+					<mem addr>
+					4 byte hex addr
+			spi
+				<mem addr>
+				4 byte hex addr
+	load
+	(load file into EERAM)
+		<source type>
+		i2c
+			<source i2c addr>
+			2 byte hex addr
+				0x<source mem addr>
+				4 byte hex addr
+				<source mem addr>
+				2 byte hex ID number
+				<source mem addr>
+				8 byte char name
+		spi
+			0x<source mem addr>
+			4 byte hex addr
+			<source mem addr>
+			2 byte hex ID number
+			<source mem addr>
+			8 byte char name
+		<destination type>
+		i2c
+			<destination i2c addr>
+			2 byte hex addr
+		spi
