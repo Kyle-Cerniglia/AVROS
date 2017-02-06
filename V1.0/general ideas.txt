@@ -15,7 +15,7 @@
 
 Memory distribution
 	Internal EEPROM
-		1048 bytes
+		1024 bytes
 		0x000 = 64 bytes PROTECTED System info
 			0x000 = Processor ID
 			0x001 = Processor I2C addr
