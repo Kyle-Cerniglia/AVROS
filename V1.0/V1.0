@@ -1,0 +1,31 @@
+//#include ps/2
+#include <TVout.h>
+#include <fontALL.h>
+#include <Wire.h>
+
+void setup(){
+  //System initialization****
+  //Check and clear EEPROM
+  //pinModes
+  Wire.begin();
+  
+  //Peripheral initialization****
+  //Check I2C
+  
+  //Memory initialization****
+  //Check and clear eEERAM
+  //Check eEEPROM
+}
+
+void loop(){
+  
+}
+
+//Graphics
+void screen_write(){
+
+}
+
+void screen_clear(){
+
+}
