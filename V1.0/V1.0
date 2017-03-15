@@ -1,16 +1,31 @@
-//#include ps/2
+#include <PS2Keyboard.h>
 #include <TVout.h>
 #include <fontALL.h>
 #include <Wire.h>
+
+#define KEYBOARD_CLK 3
+#define KEYBOARD_DATA 2
+
+TVout TV;
+PS2Keyboard keyboard;
 
 void setup(){
   //System initialization****
   //Check and clear EEPROM
   //pinModes
-  Wire.begin();
+  pinMode(KEYBOARD_CLK, OUTPUT);
+  pinMode(KEYBOARD_DATA, INPUT);
   
   //Peripheral initialization****
+  //Display
+  TV.begin(NTSC,120,96);
+  TV.select_font(font6x8);
+  TV.println("AVROS V1.0 Booting...");
+  //Keyboard
+  keyboard.begin(KEYBOARD_DATA);
   //Check I2C
+  Wire.begin();
+  
   
   //Memory initialization****
   //Check and clear eEERAM
@@ -23,9 +38,16 @@ void loop(){
 
 //Graphics
 void screen_write(){
-
+  
 }
 
 void screen_clear(){
+  TV.clear_screen();
+}
 
+//Keyboard
+char keyboard_read(){
+  if(keyboard.available()){
+    return keyboard.read();
+  }
 }
